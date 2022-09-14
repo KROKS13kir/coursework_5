@@ -4,7 +4,7 @@ services:
 
   skywars:
     image: kroks/skywars:$GITHUB_REF_NAME-$GITHUB_RUN_ID
-    command: waitress-serve --listen=*:8000 myapp.wsgi:application
+    command: gunicorn --bind 0.0.0.0:8000 run:app
     restart: always
 
   nginx:
